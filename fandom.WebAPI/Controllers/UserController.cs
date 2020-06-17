@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using fandom.Model;
 using fandom.WebAPI.Database;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -21,9 +22,6 @@ namespace fandom.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<User>> Get()
-        {
-            return _userService.Get();
-        }
+        public ActionResult<List<MUser>> Get() => _userService.Get();
     }
 }

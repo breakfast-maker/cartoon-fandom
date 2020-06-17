@@ -1,4 +1,5 @@
-﻿using fandom.WebAPI.Database;
+﻿using fandom.Model;
+using fandom.WebAPI.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace fandom.WebAPI.Services
 {
     public interface IUsersService
     {
-        List<User> Get();
+        List<MUser> Get();
     }
 }

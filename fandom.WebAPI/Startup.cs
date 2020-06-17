@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using fandom.WebAPI.Database;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -32,11 +33,14 @@ namespace fandom.WebAPI
             services.AddDbContext<AppCtx>(it => it.UseSqlServer(Configuration.GetConnectionString("SqlString")));
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+
 
             services.AddScoped<IUsersService, UsersService>();
         }
