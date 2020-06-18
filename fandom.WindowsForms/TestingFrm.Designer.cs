@@ -1,6 +1,6 @@
 ﻿namespace fandom.WindowsForms
 {
-    partial class Character_frm
+    partial class TestingFrm
     {
         /// <summary>
         /// Required designer variable.

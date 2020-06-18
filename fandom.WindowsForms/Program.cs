@@ -16,7 +16,7 @@ namespace fandom.WindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Character_frm());
+            Application.Run(new HomeForm());
         }
     }
 }

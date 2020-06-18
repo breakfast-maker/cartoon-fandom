@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace fandom.WindowsForms
 {
-    public partial class Character_frm : Form
+    public partial class TestingFrm : Form
     {
         private readonly APIService _apiService = new APIService("Character");
 
-        public Character_frm()
+        public TestingFrm()
         {
             InitializeComponent();
         }
