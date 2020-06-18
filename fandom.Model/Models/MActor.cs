@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace fandom.WebAPI.Database
+namespace fandom.Model
 {
-    public class Actor
+    public class MActor
     {
         public int Id { get; set; }
 
@@ -15,19 +12,18 @@ namespace fandom.WebAPI.Database
 
         public string LastName { get; set; }
 
-        //public byte[] Image { get; set; }
-
         public string Biography { get; set; }
 
         public int Age { get; set; }
 
-        [Column("BirthDate", TypeName = "DateTime")]
         public DateTime BirthDate { get; set; }
 
         public string Occupation { get; set; }
 
         public string WikipediaLink { get; set; }
 
-        public ICollection<Character> Narations { get; set; }
+        public ICollection<MCharacter> Narations { get; set; }
+
+
     }
 }

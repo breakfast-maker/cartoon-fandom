@@ -10,7 +10,6 @@ namespace fandom.WebAPI.Database
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(75)]
         public string Name { get; set; }
 
         public ICollection<Character> Members { get; set; }

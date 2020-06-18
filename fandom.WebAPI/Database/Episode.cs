@@ -10,18 +10,14 @@ namespace fandom.WebAPI.Database
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(20)]
         public string Title { get; set; }
 
         //public byte[] Thumbnail { get; set; }
 
-        [Required]
         public int NoOfSeason { get; set; }
 
-        [Required]
         public int OrdinalNumber { get; set; }
 
-        [MaxLength(100)]
         public string Summary { get; set; }
 
         public string VideoLink { get; set; }

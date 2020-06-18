@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fandom.Model;
+using fandom.Model.Requests;
 using fandom.WebAPI.Database;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -23,5 +24,9 @@ namespace fandom.WebAPI.Controllers
 
         [HttpGet]
         public ActionResult<List<MUser>> Get() => _userService.Get();
+
+        [HttpPost]
+        public ActionResult<MUser> InsertUser(UserInsertRequest request) => _userService.InsertUser(request);
+ 
     }
 }

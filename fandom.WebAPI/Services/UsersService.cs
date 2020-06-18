@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using fandom.Model;
+using fandom.Model.Requests;
 using fandom.WebAPI.Database;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,17 @@ namespace fandom.WebAPI.Services
             var list = _ctx.Users.ToList();
 
             return _mapper.Map<List<MUser>>(list);
-        } 
-        
+        }
+
+        public MUser InsertUser(UserInsertRequest request)
+        {
+            var user = _mapper.Map<User>(request);
+
+            _ctx.Users.Add(user);
+
+            _ctx.SaveChanges();
+
+            return _mapper.Map<MUser>(user);
+        }
     }
 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fandom.WebAPI", "fandom.WebAPI\fandom.WebAPI.csproj", "{35C1D0AA-657E-412E-89FE-E47097EAF5F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fandom.Model", "fandom.Model\fandom.Model.csproj", "{5E4BC082-2904-4C95-B585-74028DFD3D7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fandom.Model", "fandom.Model\fandom.Model.csproj", "{5E4BC082-2904-4C95-B585-74028DFD3D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fandom.WindowsForms", "fandom.WindowsForms\fandom.WindowsForms.csproj", "{0722A446-CEA0-439A-9D99-5CA3BE61196D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5E4BC082-2904-4C95-B585-74028DFD3D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E4BC082-2904-4C95-B585-74028DFD3D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E4BC082-2904-4C95-B585-74028DFD3D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0722A446-CEA0-439A-9D99-5CA3BE61196D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0722A446-CEA0-439A-9D99-5CA3BE61196D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0722A446-CEA0-439A-9D99-5CA3BE61196D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0722A446-CEA0-439A-9D99-5CA3BE61196D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

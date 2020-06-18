@@ -1,4 +1,5 @@
 ﻿using fandom.Model;
+using fandom.Model.Requests;
 using fandom.WebAPI.Database;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,7 @@ namespace fandom.WebAPI.Services
     public interface IUsersService
     {
         List<MUser> Get();
+
+        MUser InsertUser(UserInsertRequest request);
     }
 }

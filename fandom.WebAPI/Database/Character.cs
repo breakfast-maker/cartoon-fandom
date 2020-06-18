@@ -11,10 +11,8 @@ namespace fandom.WebAPI.Database
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(25)]
         public string FirstName { get; set; }
 
-        [Required, MaxLength(25)]
         public string LastName { get; set; }
 
         //public byte[] Image { get; set; }
@@ -26,13 +24,12 @@ namespace fandom.WebAPI.Database
         [Column("BirthDate", TypeName = "DateTime")]
         public DateTime BirthDate { get; set; }
 
-        [MaxLength(50)]
         public string Occupation { get; set; }
 
-        public int FamilyId { get; set; }
+        public int? FamilyId { get; set; }
         public Family Family { get; set; }
 
-        public int ActorId { get; set; }
+        public int? ActorId { get; set; }
         public Actor Narator { get; set; }
 
         public ICollection<Content> AdditionalContent { get; set; }

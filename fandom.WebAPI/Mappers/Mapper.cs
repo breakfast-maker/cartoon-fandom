@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using fandom.Model;
+using fandom.Model.Requests;
 using fandom.WebAPI.Database;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,14 @@ namespace fandom.WebAPI.Mappers
       public Mapper()
         {
             CreateMap<User, MUser>();
+            CreateMap<UserInsertRequest, User>();
+
+
+            CreateMap<Character, MCharacter>();
+            CreateMap<CharacterInsert, Character>();
+
+
+
         }
     }
 }

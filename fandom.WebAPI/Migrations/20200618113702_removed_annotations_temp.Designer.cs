@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fandom.WebAPI.Database;
 
 namespace fandom.WebAPI.Migrations
 {
     [DbContext(typeof(AppCtx))]
-    partial class AppCtxModelSnapshot : ModelSnapshot
+    [Migration("20200618113702_removed_annotations_temp")]
+    partial class removed_annotations_temp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace fandom.WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ActorId")
+                    b.Property<int>("ActorId")
                         .HasColumnType("int");
 
                     b.Property<int>("Age")
@@ -88,7 +90,7 @@ namespace fandom.WebAPI.Migrations
                         .HasColumnName("BirthDate")
                         .HasColumnType("DateTime");
 
-                    b.Property<int?>("FamilyId")
+                    b.Property<int>("FamilyId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -509,11 +511,15 @@ namespace fandom.WebAPI.Migrations
                 {
                     b.HasOne("fandom.WebAPI.Database.Actor", "Narator")
                         .WithMany("Narations")
-                        .HasForeignKey("ActorId");
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("fandom.WebAPI.Database.Family", "Family")
                         .WithMany("Members")
-                        .HasForeignKey("FamilyId");
+                        .HasForeignKey("FamilyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("fandom.WebAPI.Database.Content", b =>
