@@ -26,6 +26,8 @@ namespace fandom.WebAPI.Database
 
         public int Viewcount { get; set; }
 
+        public bool IsAssignedToSeason { get; set; } = false;
+
         public int SeasonId { get; set; }
         public Season Season { get; set; }
 
