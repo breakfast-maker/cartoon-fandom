@@ -1,4 +1,5 @@
 ﻿using fandom.Model.Models;
+using fandom.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace fandom.WindowsForms.Forms.Season
     {
         private readonly int sId;
         private readonly APIService _apiService = new APIService("Season");
+        private readonly APIService _episodeApiService = new APIService("Episode");
+
 
 
         public DetailsSeason(int id)
@@ -26,16 +29,19 @@ namespace fandom.WindowsForms.Forms.Season
         private async void DetailsSeason_Load(object sender, EventArgs e)
         {
             var result = await _apiService.GetById<MSeason>(sId);
-            BindData(result);
+            var episodesResult = await _episodeApiService.Get<List<MEpisode>>(new EpisodesSeasonRequest { SeasonId = sId });
+            BindData(result,episodesResult);
         }
 
-        private void BindData(MSeason season)
+        private void BindData(MSeason season,List<MEpisode> episodes)
         {
 
             this.sOrdinalNumber.Text = $"SEASON {season.OrdinalNumber}";
             this.sPremiereDate.Text = $"Premiere date {season.PremiereDate.ToString("dd-MM-yy")}";
             this.sSummary.Text = season.Summary;
             this.sNoOfEpisodes.Text = $"({season.NoOfEpisodes} episodes)";
+            this.dataGridView1.DataSource = episodes;
+            
         }
     }
 }

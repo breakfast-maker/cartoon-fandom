@@ -15,5 +15,7 @@ namespace fandom.Model.Models
         public int NoOfEpisodes { get; set; }
 
         public string Summary { get; set; }
+
+
     }
 }

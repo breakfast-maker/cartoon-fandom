@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fandom.Model.Models;
+using fandom.Model.Requests;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,26 @@ using Microsoft.AspNetCore.Mvc;
 namespace fandom.WebAPI.Controllers
 {
 
-    public class EpisodeController : BaseController<MEpisode, object>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EpisodeController : ControllerBase
     {
-        public EpisodeController(IBaseService<MEpisode, object> service) : base(service)
+        private readonly IEpisodeService _service;
+        public EpisodeController(IEpisodeService service)
         {
+            _service = service;
+        }
+
+        [HttpGet]
+        public List<MEpisode> Get([FromQuery] EpisodesSeasonRequest search)
+        {
+            return _service.Get(search);
+        }
+
+        [HttpGet("{id}")]
+        public MEpisode GetById(int id)
+        {
+            return _service.GetById(id);
         }
     }
 }

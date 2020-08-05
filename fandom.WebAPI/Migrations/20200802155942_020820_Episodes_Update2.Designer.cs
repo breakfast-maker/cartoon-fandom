@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fandom.WebAPI.Database;
 
 namespace fandom.WebAPI.Migrations
 {
     [DbContext(typeof(AppCtx))]
-    partial class AppCtxModelSnapshot : ModelSnapshot
+    [Migration("20200802155942_020820_Episodes_Update2")]
+    partial class _020820_Episodes_Update2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,16 +164,19 @@ namespace fandom.WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("AirDate")
+                    b.Property<DateTime>("AirDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("Duration")
+                    b.Property<long>("Duration")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("OverallNumberOfEpisode")
+                    b.Property<bool>("IsAssignedToSeason")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OverallNumberOfEpisode")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SeasonEpisodeNumber")
+                    b.Property<int>("SeasonEpisodeNumber")
                         .HasColumnType("int");
 
                     b.Property<int?>("SeasonId")
@@ -180,16 +185,13 @@ namespace fandom.WebAPI.Migrations
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Thumbnail")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VideoLink")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Viewcount")
+                    b.Property<int>("Viewcount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

@@ -63,7 +63,7 @@ namespace fandom.WindowsForms.Forms
 
             if (!option)
             {
-                result = result.Where(x => x.IsAssignedToSeason == false).ToList();
+                result = result.Where(x => x.Season == null).ToList();
                 AddItems(result);
             }
             else AddItems(result);
@@ -77,7 +77,7 @@ namespace fandom.WindowsForms.Forms
                 item.SubItems.Add(it.Title);
                 item.SubItems.Add(it.OverallNumberOfEpisode.ToString());
                 item.SubItems.Add(it.AirDate.ToString("dd-MM-yyyy"));
-                item.SubItems.Add(it.IsAssignedToSeason ? "Yes" : "No");
+                item.SubItems.Add(it.Season != null ? $"Season {it.Season.OrdinalNumber}" : "None");
 
                 this.listView1.Items.Add(item);
             }

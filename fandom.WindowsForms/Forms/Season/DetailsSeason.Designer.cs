@@ -33,15 +33,18 @@
             this.sPremiereDate = new System.Windows.Forms.Label();
             this.sSummary = new System.Windows.Forms.Label();
             this.summaryLabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // sOrdinalNumber
             // 
             this.sOrdinalNumber.AutoSize = true;
             this.sOrdinalNumber.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold);
-            this.sOrdinalNumber.Location = new System.Drawing.Point(12, 9);
+            this.sOrdinalNumber.Location = new System.Drawing.Point(9, 7);
+            this.sOrdinalNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sOrdinalNumber.Name = "sOrdinalNumber";
-            this.sOrdinalNumber.Size = new System.Drawing.Size(174, 34);
+            this.sOrdinalNumber.Size = new System.Drawing.Size(138, 26);
             this.sOrdinalNumber.TabIndex = 0;
             this.sOrdinalNumber.Text = "SEASON 0";
             // 
@@ -49,9 +52,10 @@
             // 
             this.sNoOfEpisodes.AutoSize = true;
             this.sNoOfEpisodes.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold);
-            this.sNoOfEpisodes.Location = new System.Drawing.Point(185, 19);
+            this.sNoOfEpisodes.Location = new System.Drawing.Point(139, 15);
+            this.sNoOfEpisodes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sNoOfEpisodes.Name = "sNoOfEpisodes";
-            this.sNoOfEpisodes.Size = new System.Drawing.Size(117, 17);
+            this.sNoOfEpisodes.Size = new System.Drawing.Size(97, 13);
             this.sNoOfEpisodes.TabIndex = 1;
             this.sNoOfEpisodes.Text = "(01 episodes)";
             // 
@@ -59,9 +63,10 @@
             // 
             this.sPremiereDate.AutoSize = true;
             this.sPremiereDate.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sPremiereDate.Location = new System.Drawing.Point(15, 43);
+            this.sPremiereDate.Location = new System.Drawing.Point(11, 35);
+            this.sPremiereDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sPremiereDate.Name = "sPremiereDate";
-            this.sPremiereDate.Size = new System.Drawing.Size(215, 17);
+            this.sPremiereDate.Size = new System.Drawing.Size(180, 13);
             this.sPremiereDate.TabIndex = 2;
             this.sPremiereDate.Text = "Premiere date 01-01-2000";
             // 
@@ -69,9 +74,10 @@
             // 
             this.sSummary.AutoSize = true;
             this.sSummary.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sSummary.Location = new System.Drawing.Point(15, 107);
+            this.sSummary.Location = new System.Drawing.Point(11, 87);
+            this.sSummary.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sSummary.Name = "sSummary";
-            this.sSummary.Size = new System.Drawing.Size(48, 17);
+            this.sSummary.Size = new System.Drawing.Size(41, 13);
             this.sSummary.TabIndex = 3;
             this.sSummary.Text = "label1";
             // 
@@ -79,25 +85,40 @@
             // 
             this.summaryLabel.AutoSize = true;
             this.summaryLabel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold);
-            this.summaryLabel.Location = new System.Drawing.Point(15, 80);
+            this.summaryLabel.Location = new System.Drawing.Point(11, 65);
+            this.summaryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.summaryLabel.Name = "summaryLabel";
-            this.summaryLabel.Size = new System.Drawing.Size(81, 17);
+            this.summaryLabel.Size = new System.Drawing.Size(69, 13);
             this.summaryLabel.TabIndex = 4;
             this.summaryLabel.Text = "Summary";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 114);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1017, 240);
+            this.dataGridView1.TabIndex = 5;
+            // 
             // DetailsSeason
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1033, 366);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.summaryLabel);
             this.Controls.Add(this.sSummary);
             this.Controls.Add(this.sPremiereDate);
             this.Controls.Add(this.sNoOfEpisodes);
             this.Controls.Add(this.sOrdinalNumber);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DetailsSeason";
             this.Text = "DetailsSeason";
             this.Load += new System.EventHandler(this.DetailsSeason_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +131,6 @@
         private System.Windows.Forms.Label sPremiereDate;
         private System.Windows.Forms.Label sSummary;
         private System.Windows.Forms.Label summaryLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

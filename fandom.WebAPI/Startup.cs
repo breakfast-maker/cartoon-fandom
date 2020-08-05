@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using fandom.Model.Models;
+using fandom.Model.Requests;
 using fandom.WebAPI.Database;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -40,14 +41,15 @@ namespace fandom.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
-
+            
 
 
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<ICharacterService, CharacterService>();
 
-            services.AddScoped<IBaseService<MSeason, object>, BaseService<MSeason, object, Season>>();
-            services.AddScoped<IBaseService<MEpisode, object>, BaseService<MEpisode, object, Episode>>();
+            services.AddScoped<IEpisodeService, EpisodeService>();
+            services.AddScoped<IBaseService<MSeason, object>, SeasonService>();
+
 
 
         }
