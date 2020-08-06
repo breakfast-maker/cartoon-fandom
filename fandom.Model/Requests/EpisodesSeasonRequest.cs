@@ -7,5 +7,7 @@ namespace fandom.Model.Requests
     public class EpisodesSeasonRequest
     {
         public int? SeasonId { get; set; }
+
+        public bool? isAssigned { get; set; }
     }
 }

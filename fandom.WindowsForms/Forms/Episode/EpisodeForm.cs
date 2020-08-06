@@ -1,4 +1,5 @@
 ﻿using fandom.Model.Models;
+using fandom.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,15 +59,10 @@ namespace fandom.WindowsForms.Forms
         }
 
         private async Task PopulateListView(bool option)
-        {    
-            var result = await _apiService.GetAll<List<MEpisode>>();
+        {
+            var result = await _apiService.Get<List<MEpisode>>(new EpisodesSeasonRequest { isAssigned = option });
 
-            if (!option)
-            {
-                result = result.Where(x => x.Season == null).ToList();
-                AddItems(result);
-            }
-            else AddItems(result);
+            AddItems(result);
         }
 
         private void AddItems(List<MEpisode> result)

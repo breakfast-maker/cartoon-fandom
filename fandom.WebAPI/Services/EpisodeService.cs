@@ -32,10 +32,23 @@ namespace fandom.WebAPI.Services
                 var query = ctx.Episodes.Include(x => x.Season).Where(x => x.SeasonId == request.SeasonId).ToList();
                 result = query;
             }
+            else if(request.isAssigned != null)
+            {
+                if (request.isAssigned == true)
+                {
+                    var query2 = ctx.Episodes.Include(x => x.Season).Where(x => x.Season != null).ToList();
+                    result = query2;
+                }
+                else
+                {
+                    var query3 = ctx.Episodes.Include(x => x.Season).Where(x => x.Season == null).ToList();
+                    result = query3;
+                }
+            }
             else
             {
-                var query2 = ctx.Episodes.Include(x => x.Season).ToList();
-                result = query2;
+                var query4 = ctx.Episodes.Include(x => x.Season).ToList();
+                result = query4;
             }
 
             return _mapper.Map<List<MEpisode>>(result);
