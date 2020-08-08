@@ -24,7 +24,6 @@ namespace fandom.WebAPI.Services
 
         public List<MEpisode> Get(EpisodesSeasonRequest request)
         {
-
             var result = new List<Episode>();
 
             if(request.SeasonId != null)
@@ -56,8 +55,20 @@ namespace fandom.WebAPI.Services
 
         public MEpisode GetById(int episodeId)
         {
-            var result = ctx.Episodes.Find(episodeId);
+            var result = ctx.Episodes.Include(x => x.MediaFile).Where(x => x.Id == episodeId).FirstOrDefault();
             return _mapper.Map<MEpisode>(result);
         }
+
+        public MEpisode Insert(EpisodeInsertRequest request)
+        {
+            request.OverallNumberOfEpisode = ctx.Episodes.Count() + 1;
+            var ep = _mapper.Map<Episode>(request);
+            ctx.Episodes.Add(ep);
+            ctx.SaveChanges();
+
+            return _mapper.Map<MEpisode>(ep);
+        }
+
+        
     }
 }

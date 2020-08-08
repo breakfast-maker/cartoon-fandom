@@ -32,5 +32,13 @@ namespace fandom.WebAPI.Controllers
         {
             return _service.GetById(id);
         }
+
+        [HttpPost]
+        public MEpisode Insert(EpisodeInsertRequest request)
+        {
+            return _service.Insert(request);
+        }
+
+
     }
 }

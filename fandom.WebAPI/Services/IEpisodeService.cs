@@ -12,5 +12,7 @@ namespace fandom.WebAPI.Services
         List<MEpisode> Get(EpisodesSeasonRequest request);
 
         MEpisode GetById(int episodeId);
+
+        MEpisode Insert(EpisodeInsertRequest request);
     }
 }

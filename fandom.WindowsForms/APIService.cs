@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Flurl.Http;
 using fandom.Model;
+using Flurl;
 
 namespace fandom.WindowsForms
 {
@@ -37,6 +38,13 @@ namespace fandom.WindowsForms
         {
             var url = $"{Properties.Settings.Default.API}/{_route}/{id}";
             return await url.GetJsonAsync<T>();
+        }
+
+        public async Task<T> Insert<T>(object request)
+        {
+            var url = $"{Properties.Settings.Default.API}/{_route}";
+
+            return await url.PostJsonAsync(request).ReceiveJson<T>();
         }
     }
 }

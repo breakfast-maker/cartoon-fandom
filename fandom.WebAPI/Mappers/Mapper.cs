@@ -25,6 +25,9 @@ namespace fandom.WebAPI.Mappers
             CreateMap<Episode, MEpisode>();
 
             CreateMap<Season, MSeason>();
+
+            CreateMap<MediaFile, MMediaFile>().ReverseMap();
+            CreateMap<EpisodeInsertRequest, Episode>().ReverseMap();
                 
 
 
