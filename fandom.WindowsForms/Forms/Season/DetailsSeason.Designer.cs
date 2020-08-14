@@ -44,15 +44,15 @@
             this.sOrdinalNumber.Location = new System.Drawing.Point(9, 7);
             this.sOrdinalNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sOrdinalNumber.Name = "sOrdinalNumber";
-            this.sOrdinalNumber.Size = new System.Drawing.Size(138, 26);
+            this.sOrdinalNumber.Size = new System.Drawing.Size(154, 26);
             this.sOrdinalNumber.TabIndex = 0;
-            this.sOrdinalNumber.Text = "SEASON 0";
+            this.sOrdinalNumber.Text = "SEASON 11";
             // 
             // sNoOfEpisodes
             // 
             this.sNoOfEpisodes.AutoSize = true;
             this.sNoOfEpisodes.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold);
-            this.sNoOfEpisodes.Location = new System.Drawing.Point(139, 15);
+            this.sNoOfEpisodes.Location = new System.Drawing.Point(160, 14);
             this.sNoOfEpisodes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sNoOfEpisodes.Name = "sNoOfEpisodes";
             this.sNoOfEpisodes.Size = new System.Drawing.Size(97, 13);

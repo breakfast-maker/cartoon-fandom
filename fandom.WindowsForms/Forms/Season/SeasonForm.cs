@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms.VisualStyles;
 
 namespace fandom.WindowsForms.Forms
@@ -36,6 +37,8 @@ namespace fandom.WindowsForms.Forms
             }
         }
 
+
+
         private async void SeasonForm_Load(object sender, EventArgs e)
         {
            await LoadSeasons();
@@ -56,6 +59,11 @@ namespace fandom.WindowsForms.Forms
             var form = new DetailsSeason(id);
             form.Show();
 
+        }
+
+        public ListView seasonListView
+        {
+            get { return this.listView1; }
         }
 
         public async Task LoadSeasons()

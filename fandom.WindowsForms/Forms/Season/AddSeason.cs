@@ -20,6 +20,8 @@ namespace fandom.WindowsForms.Forms.Season
 
         private readonly APIService _seasonApiService = new APIService("Season");
 
+        private readonly SeasonForm sForm = SeasonForm.GetForm;
+
 
         public  SeasonInsertRequest _request = new SeasonInsertRequest();
 
@@ -60,8 +62,11 @@ namespace fandom.WindowsForms.Forms.Season
 
             await _seasonApiService.Insert<MSeason>(_request);
 
+            var sListView = sForm.seasonListView;
 
-        
+            sListView.Items.Clear();
+           await sForm.LoadSeasons();
+
             MessageBox.Show("OK");
 
         }
