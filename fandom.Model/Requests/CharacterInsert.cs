@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fandom.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,11 +13,11 @@ namespace fandom.Model.Requests
 
         public string Biography { get; set; }
 
-        public int Age { get; set; }
-
         public DateTime BirthDate { get; set; }
 
         public string Occupation { get; set; }
+
+        public MCharacterMediaFile  MediaFile { get; set; }
 
 
     }

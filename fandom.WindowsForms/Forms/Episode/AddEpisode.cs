@@ -1,5 +1,6 @@
 ﻿using fandom.Model.Models;
 using fandom.Model.Requests;
+using fandom.WindowsForms.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,15 +38,14 @@ namespace fandom.WindowsForms.Forms.Episode
             {
                 if(ofd.ShowDialog() == DialogResult.OK)
                 {
-
                     FileInfo fi = new FileInfo(ofd.FileName);
 
                     var imageByte = File.ReadAllBytes(fi.FullName);
 
                     _request.MediaFile.Thumbnail = imageByte;
+
+                    pictureBox1.Image = ImageWorker.ConvertFromByteArray(imageByte);
                     
-                    Image image = Image.FromFile(ofd.FileName);
-                    pictureBox1.Image = image;
                 }
             }
         }

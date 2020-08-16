@@ -17,6 +17,5 @@ namespace fandom.WebAPI.Services
 
         MCharacter Insert(CharacterInsert request);
 
-        List<MCharacter> SearchByName(CharacterSearchByName request);
     }
 }

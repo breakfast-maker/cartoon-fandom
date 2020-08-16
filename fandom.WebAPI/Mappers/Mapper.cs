@@ -19,7 +19,7 @@ namespace fandom.WebAPI.Mappers
             CreateMap<UserInsertRequest, User>();
 
 
-            CreateMap<Character, MCharacter>();
+            CreateMap<Character, MCharacter>().ReverseMap();
             CreateMap<CharacterInsert, Character>();
 
             CreateMap<Episode, MEpisode>().ReverseMap();
@@ -27,6 +27,8 @@ namespace fandom.WebAPI.Mappers
             CreateMap<Season, MSeason>();
 
             CreateMap<MediaFile, MMediaFile>().ReverseMap();
+            CreateMap<CharacterMediaFile, MCharacterMediaFile>().ReverseMap();
+
             CreateMap<EpisodeInsertRequest, Episode>().ReverseMap();
                 
 

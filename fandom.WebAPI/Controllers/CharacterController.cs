@@ -22,16 +22,13 @@ namespace fandom.WebAPI.Controllers
             _service = service;
         }
 
-        //[HttpGet]
-        //public ActionResult<List<MCharacter>> GetAll() => _service.Get();
-
         [HttpGet("{id}")]
-        public ActionResult<MCharacter> GetById(int id) => _service.GetById(id);
+        public MCharacter GetById(int id) => _service.GetById(id);
 
         [HttpPost]
-        public ActionResult<MCharacter> InsertCharacter(CharacterInsert request) => _service.Insert(request);
+        public MCharacter InsertCharacter(CharacterInsert request) => _service.Insert(request);
 
         [HttpGet]
-        public ActionResult<List<MCharacter>> Get([FromQuery]CharacterSearchByName request) => _service.SearchByName(request);
+        public List<MCharacter> Get() => _service.Get();
     }
 }

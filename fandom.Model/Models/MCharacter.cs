@@ -21,7 +21,7 @@ namespace fandom.Model
 
         public string Occupation { get; set; }
 
-        public MMediaFile MediaFile { get; set; }
+        public MCharacterMediaFile CharacterMediaFile { get; set; }
 
 
     }

@@ -1,5 +1,7 @@
 ﻿using fandom.Model;
 using fandom.WindowsForms.Custom_controls;
+using fandom.WindowsForms.Forms.Character;
+using fandom.WindowsForms.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,11 +43,23 @@ namespace fandom.WindowsForms.Forms
             {
                 var character = new CharacterFamilyControl
                 {
-                    Id = item.Id.ToString()
+                    Id = item.Id.ToString(),
+                    Icon = ImageWorker.ConvertFromByteArray(item.CharacterMediaFile.Thumbnail),
+                    CharacterLabel = $"{item.FirstName} {item.LastName}"
                 };
+
+                this.flowLayoutPanel1.Controls.Add(character);
                 
             }
 
+        }
+
+        private void addEpisodeButton_Click(object sender, EventArgs e)
+        {
+
+
+            var form = new CreateCharacter();
+            form.Show();
         }
     }
 }
