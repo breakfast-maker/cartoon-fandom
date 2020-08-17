@@ -2,34 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using fandom.Model;
+using fandom.Model.Requests;
 using fandom.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 
 namespace fandom.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<TModel, TSearch> : ControllerBase
+    public class FamilyController : ControllerBase
     {
-        private readonly IBaseService<TModel, TSearch> _service;
-
-        public BaseController(IBaseService<TModel, TSearch> service)
+        private readonly IFamilyService _service;
+        public FamilyController(IFamilyService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public List<TModel> Get([FromQuery]TSearch search)
+      public  List<MFamily> GetAll()
         {
-            return _service.Get(search);
+            return _service.GetAll();
         }
 
         [HttpGet("{id}")]
-        public TModel GetById(int id)
+      public  MFamily GetById(int id)
         {
             return _service.GetById(id);
+        }
+
+        [HttpPost]
+      public  MFamily Insert(FamilyInsertRequest request)
+        {
+            return _service.Insert(request);
         }
     }
 }

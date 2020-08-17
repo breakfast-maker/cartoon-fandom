@@ -99,6 +99,12 @@
     <Compile Include="Forms\Episode\EpisodeForm.Designer.cs">
       <DependentUpon>EpisodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Family\AddFamily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Family\AddFamily.Designer.cs">
+      <DependentUpon>AddFamily.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeMDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Episode\EpisodeForm.resx">
       <DependentUpon>EpisodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Family\AddFamily.resx">
+      <DependentUpon>AddFamily.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeMDI.resx">
       <DependentUpon>HomeMDI.cs</DependentUpon>

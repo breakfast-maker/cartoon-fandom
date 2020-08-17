@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace fandom.WebAPI.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class EpisodeController : ControllerBase

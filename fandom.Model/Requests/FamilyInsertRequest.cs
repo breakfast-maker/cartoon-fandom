@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace fandom.Model
+namespace fandom.Model.Requests
 {
-   public class MFamily
+    public class FamilyInsertRequest
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public byte[] Thumbnail { get; set; }
-
-        public ICollection<MCharacter> Members { get; set; }
-
     }
 }
