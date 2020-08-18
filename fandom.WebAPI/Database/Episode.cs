@@ -30,8 +30,6 @@ namespace fandom.WebAPI.Database
         public Season Season { get; set; }
 
         public ICollection<UserEpisode> UsersEpisodes { get; set; }
-        public ICollection<EpisodeSong> EpisodesSongs { get; set; }
-        public ICollection<EpisodeLocation> EpisodesLocations { get; set; }
         public ICollection<EpisodeCharacter> EpisodesCharacters { get; set; }
 
 

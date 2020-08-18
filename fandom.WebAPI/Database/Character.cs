@@ -29,8 +29,7 @@ namespace fandom.WebAPI.Database
         public int? FamilyId { get; set; }
         public Family Family { get; set; }
 
-        public int? ActorId { get; set; }
-        public Actor Narator { get; set; }
+
 
         public ICollection<Content> AdditionalContent { get; set; }
 
