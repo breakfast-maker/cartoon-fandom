@@ -24,10 +24,13 @@ namespace fandom.WindowsForms.Forms.Character
             FirstName = "John",
             LastName = "Doe",
             MediaFile = new MCharacterMediaFile(),
-            Occupation = "None"
+            Occupation = "None",
+            Family = new MFamily()
         };
 
         private readonly APIService _characterApiService = new APIService("Character");
+        private readonly APIService _familyApiService = new APIService("Family");
+
 
         public CreateCharacter()
         {
@@ -52,13 +55,23 @@ namespace fandom.WindowsForms.Forms.Character
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            var family = await _familyApiService.GetById<MFamily>(int.Parse(this.comboBox1.SelectedValue.ToString()));
             _request.FirstName = this.textBox1.Text;
             _request.LastName = this.textBox2.Text;
             _request.Biography = this.textBox3.Text;
             _request.Occupation = this.textBox4.Text;
             _request.BirthDate = this.dateTimePicker1.Value;
+            _request.Family = family;
 
             await _characterApiService.Insert<MCharacter>(_request);
+        }
+
+        private async void CreateCharacter_Load(object sender, EventArgs e)
+        {
+            var data = await _familyApiService.GetAll<List<MFamily>>();
+            this.comboBox1.ValueMember = "Id";
+            this.comboBox1.DisplayMember = "Name";
+            this.comboBox1.DataSource = data;
         }
     }
 }

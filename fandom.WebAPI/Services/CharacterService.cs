@@ -38,12 +38,20 @@ namespace fandom.WebAPI.Services
 
         public MCharacter Insert(CharacterInsert request)
         {
-            var NewCharacter = _mapper.Map<Character>(request);
-
-            NewCharacter.CharacterMediaFile = _mapper.Map<CharacterMediaFile>(request.MediaFile);
-            
+            var NewCharacter = new Character
+            {
+                Biography = request.Biography,
+                BirthDate = request.BirthDate,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Occupation = request.Occupation
+            };
 
             _ctx.Characters.Add(NewCharacter);
+
+            NewCharacter.Family = _mapper.Map<Family>(request.Family);
+            NewCharacter.CharacterMediaFile = _mapper.Map<CharacterMediaFile>(request.MediaFile);
+
             _ctx.SaveChanges();
 
             return _mapper.Map<MCharacter>(NewCharacter);

@@ -29,7 +29,7 @@ namespace fandom.WebAPI.Services
 
         public MFamily GetById(int id)
         {
-            var family = _ctx.Families.Where(x => x.Id == id).FirstOrDefault();
+            var family = _ctx.Families.Include(x=> x.Members).Include("Members.CharacterMediaFile").Where(x => x.Id == id).FirstOrDefault();
             return _mapper.Map<MFamily>(family);
         }
 

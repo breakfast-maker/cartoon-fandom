@@ -59,19 +59,6 @@ namespace fandom.WebAPI.Services
             season.Episodes = _mapper.Map<List<Episode>>(episodes);
 
 
-            //var epIds = new List<int>();
-            //foreach(var items in episodes)
-            //{
-            //    epIds.Add(items.Id);
-            //}
-
-            //var dbEpisodes = ctx.Episodes.Where(x => epIds.Contains(x.Id)).ToList();
-            //dbEpisodes.ForEach(x =>
-            //{
-            //    x.Season = season;
-            //    x.Id = season.Id;
-            //});
-
             ctx.SaveChanges();
 
             return _mapper.Map<MSeason>(season);

@@ -64,7 +64,7 @@ namespace fandom.WindowsForms.Custom_controls
             }
             else
             {
-                var form = new DetailsFamily();
+                var form = new DetailsFamily(Int32.Parse(_Id));
                 form.Show();
             }
 

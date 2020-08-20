@@ -183,6 +183,9 @@
     <EmbeddedResource Include="Forms\Family\AddFamily.resx">
       <DependentUpon>AddFamily.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Family\DetailsFamily.resx">
+      <DependentUpon>DetailsFamily.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeMDI.resx">
       <DependentUpon>HomeMDI.cs</DependentUpon>
     </EmbeddedResource>

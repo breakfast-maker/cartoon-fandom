@@ -19,6 +19,8 @@ namespace fandom.Model.Requests
 
         public MCharacterMediaFile  MediaFile { get; set; }
 
+        public MFamily Family { get; set; }
+
 
     }
 }

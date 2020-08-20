@@ -11,7 +11,10 @@ namespace fandom.WebAPI.Database
     public class AppCtx : DbContext
     {
 
-        public AppCtx(DbContextOptions<AppCtx> options) : base(options) { }
+        public AppCtx(DbContextOptions<AppCtx> options) : base(options) {
+        
+            
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
