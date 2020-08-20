@@ -17,8 +17,6 @@ namespace fandom.WebAPI.Database
 
         public string Biography { get; set; }
 
-        public int Age { get; set; }
-
         [Column("BirthDate", TypeName = "DateTime")]
         public DateTime BirthDate { get; set; }
 

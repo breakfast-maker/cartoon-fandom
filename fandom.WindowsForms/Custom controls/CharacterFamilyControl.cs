@@ -59,7 +59,7 @@ namespace fandom.WindowsForms.Custom_controls
         {
             if (isCharacter)
             {
-                var form = new DetailsCharacter();
+                var form = new DetailsCharacter(Int32.Parse(_Id));
                 form.Show();
             }
             else

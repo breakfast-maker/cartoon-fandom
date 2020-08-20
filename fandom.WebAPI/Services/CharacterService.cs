@@ -32,7 +32,7 @@ namespace fandom.WebAPI.Services
 
         public MCharacter GetById(int id)
         {
-            var character = _ctx.Characters.Where(x => x.Id == id).SingleOrDefault();
+            var character = _ctx.Characters.Include(x => x.CharacterMediaFile).Where(x => x.Id == id).SingleOrDefault();
             return _mapper.Map<MCharacter>(character);
         }
 
