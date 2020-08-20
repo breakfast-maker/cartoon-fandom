@@ -28,9 +28,6 @@ namespace fandom.WebAPI.Database
         public Family Family { get; set; }
 
 
-
-        public ICollection<Content> AdditionalContent { get; set; }
-
         public ICollection<UserCharacter> UsersCharacters { get; set; }
         public ICollection<EpisodeCharacter> EpisodesCharacters { get; set; }
 

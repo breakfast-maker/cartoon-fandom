@@ -33,8 +33,6 @@ namespace fandom.WebAPI.Database
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Character> Characters { get; set; }
-        public DbSet<Content> Contents { get; set; }
-        public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<Episode> Episodes { get; set; }
         public DbSet<EpisodeCharacter> EpisodeCharacters { get; set; }
         public DbSet<Family> Families { get; set; }
