@@ -101,7 +101,8 @@ namespace fandom.WebAPI.Services
 
         public MEpisode Insert(EpisodeInsertRequest request)
         {
-            request.OverallNumberOfEpisode = ctx.Episodes.Count() + 1;
+            var mostRecentEpisode = ctx.Episodes.OrderByDescending(x => x.Id).FirstOrDefault();
+            request.OverallNumberOfEpisode = mostRecentEpisode.OverallNumberOfEpisode + 1;
             var ep = _mapper.Map<Episode>(request);
             
             ctx.Episodes.Add(ep);
