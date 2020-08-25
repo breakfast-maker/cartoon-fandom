@@ -33,6 +33,33 @@ namespace fandom.WindowsForms.Forms.Episode
             InitializeComponent();
         }
 
+
+
+
+        private async void AddEpisode_Load(object sender, EventArgs e)
+        {
+            await InitializeCharacters();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UploadEpisodeThumbnail();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EpisodeVideoAssignment();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            await InsertEpisode();
+        }
+
+
+
+
+
         private async Task InitializeCharacters()
         {
             var characters = await _characterApiService.Get<List<MCharacter>>();
@@ -47,12 +74,11 @@ namespace fandom.WindowsForms.Forms.Episode
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UploadEpisodeThumbnail()
         {
-
-            using(OpenFileDialog ofd = new OpenFileDialog() {Multiselect = false })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false })
             {
-                if(ofd.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     FileInfo fi = new FileInfo(ofd.FileName);
 
@@ -61,17 +87,16 @@ namespace fandom.WindowsForms.Forms.Episode
                     _request.MediaFile.Thumbnail = imageByte;
 
                     pictureBox1.Image = ImageWorker.ConvertFromByteArray(imageByte);
-                    
+
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void EpisodeVideoAssignment()
         {
-            using(OpenFileDialog ofd = new OpenFileDialog() {Multiselect=false})
+            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false })
             {
-
-                if(ofd.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     FileInfo fi = new FileInfo(ofd.FileName);
                     _request.MediaFile.FileName = $"{fi.Name}";
@@ -82,7 +107,7 @@ namespace fandom.WindowsForms.Forms.Episode
             }
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private async Task InsertEpisode()
         {
             var selectedCharacters = this.listView1.SelectedItems;
             var characters = new List<MCharacter>();
@@ -99,15 +124,7 @@ namespace fandom.WindowsForms.Forms.Episode
             _request.Title = textBox1.Text;
             _request.Summary = textBox2.Text;
             _request.AirDate = dateTimePicker1.Value;
-
-           await _episodeApiService.Insert<MEpisode>(_request);
-        }
-
-        private async void AddEpisode_Load(object sender, EventArgs e)
-        {
-          await  InitializeCharacters();
-        }
-
-       
+            await _episodeApiService.Insert<MEpisode>(_request);
+        } 
     }
 }

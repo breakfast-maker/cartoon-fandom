@@ -30,6 +30,12 @@ namespace fandom.WindowsForms.Forms.Episode
             BindData(result);
         }
 
+        private async void deleteButton_Click(object sender, EventArgs e)
+        {
+           await DeleteEpisode();
+        }
+
+
         private void BindData(MEpisode episode)
         {
             foreach (var item in episode.Characters)
@@ -50,19 +56,21 @@ namespace fandom.WindowsForms.Forms.Episode
                 axWindowsMediaPlayer1.Ctlcontrols.play();
             }
 
-            if(episode.Season != null)
+            if (episode.Season != null)
             {
                 eSeasonNumber.Text = $"S{episode.Season.OrdinalNumber}E{episode.SeasonEpisodeNumber}";
             }
         }
 
-        private async void deleteButton_Click(object sender, EventArgs e)
+        private async Task DeleteEpisode()
         {
-           
             this.Close();
-             var episodeInfo = await _episodeService.Delete<MEpisode>(_eId);
+
+            var episodeInfo = await _episodeService.Delete<MEpisode>(_eId);
+
             var seasonForm = SeasonForm.GetForm;
             await seasonForm.LoadSeasons();
+
             MessageBox.Show($"Episode {episodeInfo.Title} is removed");
         }
 
