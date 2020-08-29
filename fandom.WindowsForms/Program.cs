@@ -1,4 +1,5 @@
 ﻿using fandom.WindowsForms.Forms;
+using fandom.WindowsForms.Forms.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace fandom.WindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeMDI());
+            Application.Run(new LoginForm());
         }
     }
 }

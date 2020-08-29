@@ -13,5 +13,7 @@ namespace fandom.WebAPI.Services
         List<MUser> Get();
 
         MUser InsertUser(UserInsertRequest request);
+
+        MUser Authenticiraj(string username, string password);
     }
 }
