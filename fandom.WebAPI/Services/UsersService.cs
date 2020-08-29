@@ -47,7 +47,7 @@ namespace fandom.WebAPI.Services
 
         public MUser Authenticiraj(string username, string pass)
         {
-            var user = _ctx.Users.FirstOrDefault(x => x.Username == username);
+            var user = _ctx.Users.Include("UsersRoles.Role").FirstOrDefault(x => x.Username == username);
 
             if (user != null)
             {
@@ -55,7 +55,18 @@ namespace fandom.WebAPI.Services
 
                 if (hashedPass == user.PasswordHash)
                 {
-                    return _mapper.Map<MUser>(user);
+
+                    var muser = new MUser
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        Username = user.Username,
+                        Roles = user.UsersRoles.Select(x => new MRole { Id = x.RoleId, Name = x.Role.Name }).ToList()
+                    };
+
+                    return muser;
+
+                  //  return _mapper.Map<MUser>(user);
                 }
             }
 

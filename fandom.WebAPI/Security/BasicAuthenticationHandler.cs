@@ -58,6 +58,11 @@ namespace fandom.WebAPI.Security
                 new Claim(ClaimTypes.Name, user.Email)
             };
 
+            foreach(var role in user.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Name));
+            }
+
 
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

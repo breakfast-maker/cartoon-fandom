@@ -27,6 +27,7 @@ namespace fandom.WebAPI.Controllers
         [HttpGet]
         public ActionResult<List<MUser>> Get() => _userService.Get();
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult<MUser> InsertUser(UserInsertRequest request) => _userService.InsertUser(request);
  

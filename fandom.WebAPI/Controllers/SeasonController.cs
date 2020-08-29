@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using fandom.Model.Models;
 using fandom.Model.Requests;
 using fandom.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,6 +34,7 @@ namespace fandom.WebAPI.Controllers
             return _service.GetById(id);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public MSeason Insert(SeasonInsertRequest request)
         {
