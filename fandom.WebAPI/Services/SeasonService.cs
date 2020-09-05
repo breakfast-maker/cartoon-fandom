@@ -30,7 +30,7 @@ namespace fandom.WebAPI.Services
 
         public  MSeason GetById(int id)
         {
-            var result = ctx.Seasons.Include(x => x.Episodes).Where(x => x.Id == id).FirstOrDefault();
+            var result = ctx.Seasons.Where(x => x.Id == id).FirstOrDefault();
             return _mapper.Map<MSeason>(result);
         }
 

@@ -29,6 +29,8 @@ namespace fandom.WindowsForms.Forms.Login
 
                 var form = new HomeMDI();
                 form.Show();
+
+                this.Hide();
             }
             catch(Exception ex)
             {

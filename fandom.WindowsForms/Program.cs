@@ -18,7 +18,10 @@ namespace fandom.WindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new LoginForm());
         }
+
+
     }
 }

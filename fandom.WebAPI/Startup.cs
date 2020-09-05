@@ -111,7 +111,7 @@ namespace fandom.WebAPI
             });
 
 
-            app.UseHttpsRedirection();
+          //  app.UseHttpsRedirection();
 
             app.UseRouting();
 

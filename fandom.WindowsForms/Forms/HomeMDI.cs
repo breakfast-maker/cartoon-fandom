@@ -167,5 +167,10 @@ namespace fandom.WindowsForms.Forms
             form.Show();
             form.BringToFront();
         }
+
+        private void HomeMDI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

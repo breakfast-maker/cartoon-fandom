@@ -16,6 +16,5 @@ namespace fandom.Model.Models
 
         public string Summary { get; set; }
 
-
     }
 }
