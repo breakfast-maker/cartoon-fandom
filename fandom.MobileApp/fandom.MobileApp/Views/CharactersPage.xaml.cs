@@ -28,11 +28,12 @@ namespace fandom.MobileApp.Views
 
         }
 
-        void OnTap(object sender, ItemTappedEventArgs e)
+        async void  OnTap(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as MCharacter;
             // Application.Current.MainPage.DisplayAlert("Community", "Radi","OKH");
-            Application.Current.MainPage = new CharacterDetailPage(item.Id);
+            await Navigation.PushAsync(new CharacterDetailPage(item.Id));
+
         }
 
 

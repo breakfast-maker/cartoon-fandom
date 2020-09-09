@@ -40,7 +40,7 @@ namespace fandom.MobileApp.ViewModels
             APIService.Password = Password;
             var users = await _apiService.Get<List<MUser>>();
             APIService.LoggedUser = users.Where(x => x.Username == Username).FirstOrDefault();
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new NavigationPage(new MainPage());
 
 
         }

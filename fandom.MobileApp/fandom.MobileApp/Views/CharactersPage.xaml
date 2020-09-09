@@ -1,24 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels="clr-namespace:fandom.MobileApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels="clr-namespace:fandom.MobileApp.ViewModels" xmlns:converters="clr-namespace:fandom.MobileApp.Converters"
              x:Class="fandom.MobileApp.Views.CharactersPage">
     <ContentPage.BindingContext>
         <viewModels:CharactersViewModel/>
     </ContentPage.BindingContext>
-    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+     <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+        <Image WidthRequest="160" HeightRequest="40" Source="Assets/southparklogo.png"  HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemTapped="OnTap" SelectionMode="None" ItemsSource="{Binding characters}" Header="List of characters">
+            <ListView ItemTapped="OnTap" SelectionMode="None" ItemsSource="{Binding characters}">
+                <ListView.Header>
+                    <StackLayout Padding="25,25,25,25" BackgroundColor="#cccccc">
+                        <Label FontAttributes="Bold" FontSize="Title" Text="Characters"/>
+                    </StackLayout>
+                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical">
+                            <StackLayout Margin="5,5,5,5" Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal">
-                                   <Image HeightRequest="50" WidthRequest="60" Source="Assets/southparklogo.png" />
-                                   <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding FirstName}"/>
-                                    <Label Text="{Binding Id}"/>
-                                   </StackLayout>
+                                    <Image x:Name="testImage" HeightRequest="150" WidthRequest="350" Source="{Binding CharacterMediaFile.Thumbnail, Converter={StaticResource imgConv}}" />
+                                    <StackLayout Orientation="Vertical">
+                                        <Label FontSize="Large" FontAttributes="Bold"  VerticalOptions="Center" Text="{Binding FirstName}"/>
+                                        <Label FontSize="Medium" VerticalOptions="Center" Text="{Binding LastName}"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

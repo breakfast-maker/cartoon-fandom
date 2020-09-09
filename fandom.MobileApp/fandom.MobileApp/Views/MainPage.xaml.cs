@@ -28,9 +28,10 @@ namespace fandom.MobileApp
 
         }
 
-        void OnCharacterTapped(object sender, EventArgs e)
+       async void OnCharacterTapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new CharactersPage();
+         //   Application.Current.MainPage = new CharactersPage();
+            await Navigation.PushAsync(new CharactersPage());
 
         }
 
