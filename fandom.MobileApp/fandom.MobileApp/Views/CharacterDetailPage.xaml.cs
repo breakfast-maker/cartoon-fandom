@@ -20,10 +20,17 @@ namespace fandom.MobileApp.Views
         public CharacterDetailPage(MCharacter character)
         {
             InitializeComponent();
-           BindingContext = CharacterDetailsVM = new CharacterDetailsViewModel { Character=character };
+            BindingContext = CharacterDetailsVM = new CharacterDetailsViewModel { Character=character };
             CharacterDetailsVM.CheckRelation();
 
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await CharacterDetailsVM.LoadCharacterEpisode();
 
         }
+
     }
 }

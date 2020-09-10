@@ -77,6 +77,26 @@ namespace fandom.WebAPI.Services
                 var query4 = ctx.Episodes.Include(x => x.Season).Include(x => x.MediaFile).Where(x => request.EpisodesIds.Contains(x.Id)).ToList();
                 result = query4;
             }
+            else if(request.CharacterId != null)
+            {
+                var query5 = ctx.EpisodeCharacters.Where(x => x.CharacterId == request.CharacterId).Select(x => new Episode
+                {
+                    AirDate = x.Episode.AirDate,
+                    Duration = x.Episode.Duration,
+                    Id = x.Episode.Id,
+                    MediaFile = x.Episode.MediaFile,
+                    OverallNumberOfEpisode = x.Episode.OverallNumberOfEpisode,
+                    Season = x.Episode.Season,
+                    SeasonEpisodeNumber = x.Episode.SeasonEpisodeNumber,
+                    Summary = x.Episode.Summary,
+                    Title = x.Episode.Title,
+                    Viewcount = x.Episode.Viewcount,
+                    SeasonId = x.Episode.SeasonId,
+
+                }).ToList();
+
+                result = query5;
+            }
 
             else
             {

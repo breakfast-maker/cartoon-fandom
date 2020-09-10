@@ -11,5 +11,7 @@ namespace fandom.Model.Requests
         public bool? isAssigned { get; set; }
 
         public List<int> EpisodesIds { get; set; }
+
+        public int? CharacterId { get; set; }
     }
 }

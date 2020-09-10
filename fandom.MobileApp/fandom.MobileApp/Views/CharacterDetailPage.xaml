@@ -9,6 +9,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+            <converters:DateConverter x:Key="dateConv"></converters:DateConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -19,12 +20,47 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Center" Orientation="Horizontal">
-                <Label FontAttributes="Bold"  Text="{Binding Character.FirstName}" />
-                <Label FontAttributes="Bold" Text="{Binding Character.LastName}"/>
-                <Button Text="{Binding ButtonPreferenceText}" Command="{Binding UpdateUserPreference}" />
+                <Label FontAttributes="Bold" FontSize="Medium" Text="{Binding Character.FirstName}" />
+                <Label FontAttributes="Bold" FontSize="Medium" Text="{Binding Character.LastName}"/>
+                <ImageButton Source="Assets/heart2.png" HeightRequest="15"  WidthRequest="15"  Command="{Binding UpdateUserPreference}" />
             </StackLayout>
-        </StackLayout>
+            <Image x:Name="testImage" HeightRequest="250" WidthRequest="450" Source="{Binding Character.CharacterMediaFile.Thumbnail, Converter={StaticResource imgConv}}" />
+            <Label Padding="10,10,10,0" Text="Biography" FontAttributes="Bold" FontSize="Micro" HorizontalOptions="FillAndExpand" />
+            <Label Padding="10,0,10,10" Text="{Binding Character.Biography}" FontSize="Micro" HorizontalOptions="FillAndExpand" />
+            <Label Padding="10,10,10,0"  HorizontalOptions="Center" Text="Birth date" FontAttributes="Bold" FontSize="Micro"  />
+            <Label Padding="10,0,10,10" Text="{Binding Character.BirthDate, Converter={StaticResource dateConv}}" FontSize="Micro" HorizontalOptions="Center" />
+            <Label Padding="10,10,10,0"  HorizontalOptions="Center" Text="Occupation" FontAttributes="Bold" FontSize="Micro" />
+                <Label Padding="10,0,10,10" Text="{Binding Character.Occupation}" FontSize="Micro" HorizontalOptions="Center" />
+                <StackLayout VerticalOptions="End"  Orientation="Vertical">
+                    <Label FontAttributes="Bold" FontSize="Medium" Text="Appears on"></Label>
+                    <CollectionView ItemsSource="{Binding episodesCharacterAppearedOn}"
+                ItemsLayout="VerticalGrid, 3">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="35" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Aspect="Fill" Grid.Row="0" Grid.ColumnSpan="2" x:Name="testImage" HeightRequest="100" WidthRequest="130" Source="{Binding MediaFile.Thumbnail, Converter={StaticResource imgConv}}" />
+                                    <Label HorizontalOptions="FillAndExpand" Grid.Row="1"
+                                           Grid.ColumnSpan="2"
+                                     Text="{Binding Title}"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                                     </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
