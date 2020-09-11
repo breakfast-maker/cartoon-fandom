@@ -15,7 +15,6 @@ namespace fandom.MobileApp.ViewModels
 
         public MPost Post { get; set; }
 
-        public ICommand InitPost;
 
     }
 }
