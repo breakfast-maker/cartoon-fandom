@@ -90,6 +90,9 @@ namespace fandom.WebAPI
             services.AddScoped<IFamilyService, FamilyService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ITagService, TagService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

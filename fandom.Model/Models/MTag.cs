@@ -10,5 +10,6 @@ namespace fandom.Model.Models
 
         public string Title { get; set; }
 
+        public bool isChecked { get; set; } = false;
     }
 }

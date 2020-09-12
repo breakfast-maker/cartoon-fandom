@@ -1,4 +1,5 @@
 ﻿using fandom.Mobile.ViewModels;
+using fandom.MobileApp.Views;
 using fandom.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ namespace fandom.MobileApp.ViewModels
         public ICommand InitPosts;
 
 
-
         public CommunityViewModel()
         {
             InitPosts = new Command(async () => await LoadPosts());
@@ -35,6 +35,8 @@ namespace fandom.MobileApp.ViewModels
                 AllPosts.Add(item);
             }
         }
+
+       
 
     }
 }

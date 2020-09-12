@@ -17,12 +17,11 @@
     <ContentPage.Content>
       <ScrollView>
         <StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="15,15,15,15" BackgroundColor="#cccccc">
+                    <Label HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Title" Text="Community"/>
+                    <Button Clicked="Button_Clicked" HorizontalOptions="End" Text="New Post"/>
+                </StackLayout>
                 <ListView ItemTapped="ListView_ItemTapped" SelectionMode="None" ItemsSource="{Binding AllPosts}">
-                    <ListView.Header>
-                        <StackLayout Padding="15,15,15,15" BackgroundColor="#cccccc">
-                            <Label FontAttributes="Bold" FontSize="Title" Text="Community"/>
-                        </StackLayout>
-                    </ListView.Header>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -44,7 +43,7 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Title}"
+                                                <Label LineBreakMode="TailTruncation" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Title}"
                                                     FontSize="Small"
                                                     FontAttributes="Bold" />
                                                
@@ -55,7 +54,7 @@
                                             <BoxView Color="Black"
                                                 HeightRequest="2"
                                                 HorizontalOptions="Fill" />
-                                            <Label Text="{Binding Summary}"/>
+                                            <Label LineBreakMode="TailTruncation" Text="{Binding Summary}"/>
                                         </StackLayout>
                                     </Frame>
                                 </StackLayout>

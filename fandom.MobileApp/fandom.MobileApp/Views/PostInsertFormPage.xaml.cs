@@ -1,5 +1,4 @@
 ﻿using fandom.MobileApp.ViewModels;
-using fandom.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,33 +11,25 @@ using Xamarin.Forms.Xaml;
 namespace fandom.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CommunityPage : ContentPage
+    public partial class PostInsertFormPage : ContentPage
     {
-        public CommunityViewModel CommunityVM = null;
+        public PostInsertViewModel PostInsertVM = null;
 
-        public CommunityPage()
+        public PostInsertFormPage()
         {
             InitializeComponent();
-
-            BindingContext = CommunityVM = new CommunityViewModel();
+            BindingContext = PostInsertVM = new PostInsertViewModel();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await CommunityVM.LoadPosts();
-        }
-
-        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var item = e.Item as MPost;
-            await Navigation.PushAsync(new PostPage(item));
+            await PostInsertVM.LoadFields();
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostInsertFormPage());
-
+            await PostInsertVM.InsertPost();
         }
     }
 }
