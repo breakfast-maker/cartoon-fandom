@@ -77,6 +77,7 @@ namespace fandom.WebAPI.Services
         {
             var list = _ctx.Users.Select(x => new MUser {
                 Id = x.Id,
+                Username=x.Username,
                 Email = x.Email,
                 FavouriteCharacters = x.UsersCharacters.Where(y => y.UserId == x.Id).Select(y =>
                  new MCharacter
@@ -89,7 +90,11 @@ namespace fandom.WebAPI.Services
                      CharacterMediaFile = _mapper.Map<MCharacterMediaFile>(y.Character.CharacterMediaFile),
                      Occupation = y.Character.Occupation
                  }).ToList(),
-                Username = x.Username,
+                FavouriteEpisodes = x.UsersEpisodes.Where(y => y.UserId == x.Id).Select(y =>
+                 new MEpisode
+                 {
+                     Id = y.EpisodeId,
+                 }).ToList(),
                 Roles = x.UsersRoles.Where(y => y.UserId==x.Id).Select(y => new MRole { Id = y.Role.Id, Name = y.Role.Name }).ToList()
             }).ToList();
 
@@ -182,14 +187,14 @@ namespace fandom.WebAPI.Services
             
             if(request.NewFavouriteEpisode != null)
             {
-                UserEpisode ue = new UserEpisode { EpisodeId = request.NewFavouriteCharacter.Id, UserId = user.Id };
+                UserEpisode ue = new UserEpisode { EpisodeId = request.NewFavouriteEpisode.Id, UserId = user.Id };
 
                 if (request.ToAdd)
                 {
                     _ctx.UserEpisodes.Add(ue);
                     _ctx.SaveChanges();
 
-                    userToReturn.FavouriteEpisodes.Add(request.NewFavouriteEpisode);
+                    userToReturn.FavouriteEpisodes.Add(new MEpisode { Id = request.NewFavouriteEpisode.Id });
 
                 }
                 else
@@ -197,7 +202,9 @@ namespace fandom.WebAPI.Services
                     _ctx.UserEpisodes.Remove(ue);
                     _ctx.SaveChanges();
 
-                    userToReturn.FavouriteEpisodes.Remove(request.NewFavouriteEpisode);
+
+                    var ep = userToReturn.FavouriteEpisodes.Where(x => x.Id == request.NewFavouriteEpisode.Id).FirstOrDefault();
+                    userToReturn.FavouriteEpisodes.Remove(ep);
 
                 }
             }

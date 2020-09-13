@@ -19,6 +19,7 @@ namespace fandom.MobileApp.Views
         {
             InitializeComponent();
             BindingContext = EpisodeDetailsVM = new EpisodeDetailsViewModel { Episode = episode };
+            EpisodeDetailsVM.CheckRelation();
         }
 
         protected async override void OnAppearing()
