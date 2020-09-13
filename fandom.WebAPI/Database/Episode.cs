@@ -20,9 +20,7 @@ namespace fandom.WebAPI.Database
 
         public string Summary { get; set; }
 
-        public long? Duration { get; set; }
-
-        public int? Viewcount { get; set; }
+        public int Viewcount { get; set; }
 
         public MediaFile MediaFile { get; set; }
 

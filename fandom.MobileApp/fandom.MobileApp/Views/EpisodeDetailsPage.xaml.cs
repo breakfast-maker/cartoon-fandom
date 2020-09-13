@@ -20,5 +20,11 @@ namespace fandom.MobileApp.Views
             InitializeComponent();
             BindingContext = EpisodeDetailsVM = new EpisodeDetailsViewModel { Episode = episode };
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+           await EpisodeDetailsVM.UpdateViewCount();
+        }
     }
 }

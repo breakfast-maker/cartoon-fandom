@@ -82,7 +82,6 @@ namespace fandom.WebAPI.Services
                 var query5 = ctx.EpisodeCharacters.Where(x => x.CharacterId == request.CharacterId).Select(x => new Episode
                 {
                     AirDate = x.Episode.AirDate,
-                    Duration = x.Episode.Duration,
                     Id = x.Episode.Id,
                     MediaFile = x.Episode.MediaFile,
                     OverallNumberOfEpisode = x.Episode.OverallNumberOfEpisode,
@@ -150,6 +149,14 @@ namespace fandom.WebAPI.Services
             return _mapper.Map<MEpisode>(ep);
         }
 
-        
+        public MEpisode Update(int id)
+        {
+            var episode = ctx.Episodes.Find(id);
+            episode.Viewcount += 1;
+
+            ctx.SaveChanges();
+
+            return _mapper.Map<MEpisode>(episode);
+        }
     }
 }

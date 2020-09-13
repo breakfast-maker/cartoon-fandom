@@ -18,9 +18,7 @@ namespace fandom.Model.Models
 
         public string Summary { get; set; }
 
-        public long? Duration { get; set; }
-
-        public int? Viewcount { get; set; }
+        public int Viewcount { get; set; }
 
         public MMediaFile MediaFile { get; set; }
 

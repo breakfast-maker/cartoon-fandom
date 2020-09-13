@@ -44,6 +44,9 @@ namespace fandom.WebAPI.Controllers
             return _service.Delete(id);
         }
 
+        [HttpPut("{id}")]
+        public MEpisode Update(int id) => _service.Update(id);
+
 
     }
 }

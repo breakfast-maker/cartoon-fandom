@@ -25,6 +25,7 @@
         <StackLayout Orientation="Vertical">
                 <MediaElement   VerticalOptions="FillAndExpand" Source="{Binding Episode.MediaFile.Path}"
                         ShowsPlaybackControls="True" />
+                <Label Text="{Binding Episode.Viewcount}"/>
                 <Label  Padding="10,0,0,10" Text="{Binding Episode.Title}" FontSize="Small"/>
                 <Label  Padding="10,0,0,10" FontSize="Small">
                  <Label.FormattedText>

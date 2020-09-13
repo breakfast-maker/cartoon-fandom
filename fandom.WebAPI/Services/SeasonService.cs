@@ -34,7 +34,6 @@ namespace fandom.WebAPI.Services
                 SeasonEpisodes = ctx.Episodes.Include(y => y.MediaFile).Include(y => y.Season).Where(y => y.SeasonId == x.Id).Select(e => new MEpisode
                 {
                     AirDate = (DateTime)e.AirDate,
-                    Duration = e.Duration,
                     Id = e.Id,
                     MediaFile = _mapper.Map<MMediaFile>(e.MediaFile),
                     OverallNumberOfEpisode = (int)e.OverallNumberOfEpisode,
