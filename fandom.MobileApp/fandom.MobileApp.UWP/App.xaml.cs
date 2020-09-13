@@ -28,8 +28,10 @@ namespace fandom.MobileApp.UWP
         /// </summary>
         public App()
         {
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
         }
 
         /// <summary>

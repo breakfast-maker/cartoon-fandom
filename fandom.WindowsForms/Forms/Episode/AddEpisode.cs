@@ -46,11 +46,6 @@ namespace fandom.WindowsForms.Forms.Episode
             UploadEpisodeThumbnail();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            EpisodeVideoAssignment();
-        }
-
         private async void button3_Click(object sender, EventArgs e)
         {
             await InsertEpisode();
@@ -92,20 +87,7 @@ namespace fandom.WindowsForms.Forms.Episode
             }
         }
 
-        private void EpisodeVideoAssignment()
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false })
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo fi = new FileInfo(ofd.FileName);
-                    _request.MediaFile.FileName = $"{fi.Name}";
-                    _request.MediaFile.Path = fi.FullName;
 
-                    label4.Text = $"{fi.Name}";
-                }
-            }
-        }
 
         private async Task InsertEpisode()
         {
@@ -120,6 +102,7 @@ namespace fandom.WindowsForms.Forms.Episode
 
             }
 
+            _request.MediaFile.Path = videoUrlTextBox.Text;
             _request.MainCharacters = characters;
             _request.Title = textBox1.Text;
             _request.Summary = textBox2.Text;

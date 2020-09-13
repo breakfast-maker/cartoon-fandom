@@ -22,13 +22,13 @@ namespace fandom.MobileApp
 
         }
 
-        void OnEpisodeTapped(object sender, EventArgs e)
+        async void OnEpisodeTapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage.DisplayAlert("Episode", "Radi", "OKH");
+            await Navigation.PushAsync(new EpisodesPage());
 
         }
 
-       async void OnCharacterTapped(object sender, EventArgs e)
+        async void OnCharacterTapped(object sender, EventArgs e)
         {
          //   Application.Current.MainPage = new CharactersPage();
             await Navigation.PushAsync(new CharactersPage());

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels="clr-namespace:fandom.MobileApp.ViewModels" xmlns:converters="clr-namespace:fandom.MobileApp.Converters"
+             x:Class="fandom.MobileApp.Views.EpisodeDetailsPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:CharactersViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateConverter x:Key="dateConv"></converters:DateConverter>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image WidthRequest="160" HeightRequest="40" Source="Assets/southparklogo.png"  HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Orientation="Vertical">
+                <MediaElement   VerticalOptions="FillAndExpand" Source="{Binding Episode.MediaFile.Path}"
+                        ShowsPlaybackControls="True" />
+                <Label  Padding="10,0,0,10" Text="{Binding Episode.Title}" FontSize="Small"/>
+                <Label  Padding="10,0,0,10" FontSize="Small">
+                 <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="S"/>
+                        <Span Text="{Binding Episode.Season.OrdinalNumber }"/>
+                        <Span Text="E"/>
+                        <Span Text="{Binding Episode.SeasonEpisodeNumber }"/>
+                    </FormattedString>
+                 </Label.FormattedText>
+                </Label>
+            <Label Padding="10,0,0,10" Text="{Binding Episode.AirDate, Converter={StaticResource dateConv}}" FontSize="Small"/>
+                <Label  Padding="10,0,0,10" Text="{Binding Episode.Summary}"/>
+                <Label  Padding="10,0,0,10" Text="Characters apperance"/>
+                <ListView  HeightRequest="150" Grid.Row="1" Grid.Column="0" SelectionMode="None" ItemsSource="{Binding Episode.Characters}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image x:Name="testImage" HeightRequest="15" WidthRequest="35" Source="{Binding CharacterMediaFile.Thumbnail, Converter={StaticResource imgConv}}" />
+                                        <StackLayout Orientation="Vertical">
+                                            <Label  FontAttributes="Bold"  VerticalOptions="Center" Text="{Binding FirstName}"/>
+                                            <Label  VerticalOptions="Center" Text="{Binding LastName}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

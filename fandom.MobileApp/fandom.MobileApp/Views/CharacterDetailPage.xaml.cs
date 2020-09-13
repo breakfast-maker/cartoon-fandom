@@ -20,6 +20,7 @@ namespace fandom.MobileApp.Views
         public CharacterDetailPage(MCharacter character)
         {
             InitializeComponent();
+            
             BindingContext = CharacterDetailsVM = new CharacterDetailsViewModel { Character=character };
             CharacterDetailsVM.CheckRelation();
 

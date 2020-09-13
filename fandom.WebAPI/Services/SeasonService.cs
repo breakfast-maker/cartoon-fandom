@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using fandom.Model;
 using fandom.Model.Models;
 using fandom.Model.Requests;
 using fandom.WebAPI.Database;
@@ -30,8 +31,32 @@ namespace fandom.WebAPI.Services
                 OrdinalNumber = x.OrdinalNumber,
                 PremiereDate = x.PremiereDate,
                 Summary = x.Summary,
-                SeasonEpisodes = _mapper.Map<List<MEpisode>>(ctx.Episodes.Include(x => x.MediaFile).Where(y => y.SeasonId == x.Id).ToList())
+                SeasonEpisodes = ctx.Episodes.Include(y => y.MediaFile).Include(y => y.Season).Where(y => y.SeasonId == x.Id).Select(e => new MEpisode
+                {
+                    AirDate = (DateTime)e.AirDate,
+                    Duration = e.Duration,
+                    Id = e.Id,
+                    MediaFile = _mapper.Map<MMediaFile>(e.MediaFile),
+                    OverallNumberOfEpisode = (int)e.OverallNumberOfEpisode,
+                    Season = _mapper.Map<MSeason>(e.Season),
+                    SeasonEpisodeNumber = e.SeasonEpisodeNumber,
+                    Summary = e.Summary,
+                    Title = e.Title,
+                    Viewcount = e.Viewcount,
+                    Characters = ctx.EpisodeCharacters.Where(c => c.EpisodeId==e.Id).Select(c => new MCharacter
+                    {
+                        Biography = c.Character.Biography,
+                        BirthDate = c.Character.BirthDate,
+                        CharacterMediaFile = _mapper.Map<MCharacterMediaFile>(c.Character.CharacterMediaFile),
+                        FirstName = c.Character.FirstName,
+                        LastName = c.Character.LastName,
+                        Occupation = c.Character.Occupation,
+                        Id = c.CharacterId
+                    }).ToList()
+                }).ToList()
             }).ToList();
+
+            
 
             return list;
         }
