@@ -40,5 +40,7 @@ namespace fandom.MobileApp.Views
             await Navigation.PushAsync(new PostInsertFormPage());
 
         }
+
+        
     }
 }
