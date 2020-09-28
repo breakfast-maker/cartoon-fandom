@@ -33,6 +33,8 @@ namespace fandom.WebAPI.Database
         public DbSet<UserCharacter> UserCharacters { get; set; }
         public DbSet<UserEpisode> UserEpisodes { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<UserEpisodeActivity> UserEpisodeActivities { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,8 @@ namespace fandom.WebAPI.Database
             modelBuilder.Entity<UserEpisode>().HasKey(k => new { k.UserId, k.EpisodeId });
             modelBuilder.Entity<UserCharacter>().HasKey(k => new { k.UserId, k.CharacterId });
             modelBuilder.Entity<PostTag>().HasKey(k => new { k.PostId, k.TagId });
+            modelBuilder.Entity<UserEpisodeActivity>().HasKey(k => new { k.UserId, k.EpisodeId });
+
 
             modelBuilder.Entity<EpisodeCharacter>()
                       .HasKey(ec => new { ec.EpisodeId, ec.CharacterId });

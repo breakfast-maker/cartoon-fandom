@@ -150,13 +150,19 @@ namespace fandom.WebAPI.Services
             return _mapper.Map<MEpisode>(ep);
         }
 
-        public MEpisode Update(int id)
+        public MEpisode Update(int id, EpisodeUserActivityRequest request)
         {
             var episode = ctx.Episodes.Find(id);
             episode.Viewcount += 1;
-
             ctx.SaveChanges();
 
+            var activityCheck = ctx.UserEpisodeActivities?.Where(x => x.EpisodeId == request.EpisodeId && x.UserId == request.UserId)?.FirstOrDefault();
+            if (activityCheck == null)
+            {
+                var newRecord = new UserEpisodeActivity { EpisodeId = request.EpisodeId, UserId = request.UserId };
+                ctx.UserEpisodeActivities.Add(newRecord);
+                ctx.SaveChanges();
+            }
             return _mapper.Map<MEpisode>(episode);
         }
     }

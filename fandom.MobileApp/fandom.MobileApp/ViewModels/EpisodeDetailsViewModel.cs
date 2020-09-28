@@ -59,7 +59,8 @@ namespace fandom.MobileApp.ViewModels
 
         public async Task UpdateViewCount()
         {
-            await _episodeApiService.Update<MEpisode>(Episode.Id, null);
+            var request = new EpisodeUserActivityRequest { EpisodeId = Episode.Id, UserId = APIService.LoggedUser.Id };
+           var episode = await _episodeApiService.Update<MEpisode>(Episode.Id, request);
         }
 
         public void CheckRelation()

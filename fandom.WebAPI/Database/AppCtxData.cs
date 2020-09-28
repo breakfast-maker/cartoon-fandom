@@ -89,10 +89,10 @@ namespace fandom.WebAPI.Database
             modelBuilder.Entity<Category>()
                 .HasData
                 (
-                   new Category { Id = 1, CategoryColor = "Red", Title = "Announcment" },
-                   new Category { Id = 2, CategoryColor = "Yellow", Title = "Funny" },
-                   new Category { Id = 3, CategoryColor = "Blue", Title = "News" },
-                   new Category { Id = 4, CategoryColor = "Yellow", Title = "Recommendation" }
+                   new Category { Id = 1, CategoryColor = "#f0312e", Title = "Announcment" },
+                   new Category { Id = 2, CategoryColor = "#ff8b1f", Title = "Funny" },
+                   new Category { Id = 3, CategoryColor = "#5f5cbf", Title = "News" },
+                   new Category { Id = 4, CategoryColor = "#32a852", Title = "Recommendation" }
                 );
 
 

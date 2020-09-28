@@ -45,7 +45,7 @@ namespace fandom.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public MEpisode Update(int id) => _service.Update(id);
+        public MEpisode Update(int id, EpisodeUserActivityRequest request) => _service.Update(id,request);
 
 
     }

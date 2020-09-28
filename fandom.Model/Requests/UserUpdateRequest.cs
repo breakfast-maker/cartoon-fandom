@@ -7,7 +7,6 @@ namespace fandom.Model.Requests
 {
     public class UserUpdateRequest
     {
-
         public MCharacter NewFavouriteCharacter { get; set; }
 
         public MEpisode NewFavouriteEpisode { get; set; }
