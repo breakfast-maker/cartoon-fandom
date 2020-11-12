@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace fandom.MobileApp
 {
+    //..
     public class APIService
     {
         public static string Username { get; set; }
