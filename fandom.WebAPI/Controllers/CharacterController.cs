@@ -30,5 +30,8 @@ namespace fandom.WebAPI.Controllers
 
         [HttpGet]
         public List<MCharacter> Get() => _service.Get();
+
+        [HttpPut("{id}")]
+        public MCharacter UpdateCharacter(int id, CharacterUpdateRequest request) => _service.Update(id, request);
     }
 }

@@ -85,5 +85,43 @@ namespace fandom.WebAPI.Services
             return _mapper.Map<MCharacter>(NewCharacter);
         }
 
+        public MCharacter Update(int id, CharacterUpdateRequest request)
+        {
+            Character character = _ctx.Characters.Include(x => x.CharacterMediaFile).Where(x => x.Id == id).FirstOrDefault();
+            if(character != null)
+            {
+                if(request.FirstName != "" && request.FirstName != character.FirstName)
+                {
+                    character.FirstName = request.FirstName;
+                }
+
+                if(request.LastName != "" && request.LastName != character.LastName)
+                {
+                    character.LastName = request.LastName;
+                }
+
+                if (request.Biography != "" && request.Biography != character.Biography)
+                {
+                    character.Biography = request.Biography;
+                }
+
+                if (request.Occupation != "" && request.Occupation != character.Occupation)
+                {
+                    character.Occupation = request.Occupation;
+                }
+
+                if(request.MediaFile.Thumbnail != null)
+                {
+                    character.CharacterMediaFile.Thumbnail = request.MediaFile.Thumbnail;
+                }
+
+                character.BirthDate = request.BirthDate;
+
+                _ctx.SaveChanges();
+            }
+
+            return _mapper.Map<MCharacter>(character);
+        }
+
     }
 }

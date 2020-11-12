@@ -1,10 +1,13 @@
 ﻿using fandom.Model;
+using fandom.Model.Models;
+using fandom.Model.Requests;
 using fandom.WindowsForms.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +19,15 @@ namespace fandom.WindowsForms.Forms.Character
     {
         private readonly int _characterId;
         private readonly APIService _characterApiService = new APIService("Character");
+        private CharacterUpdateRequest request = new CharacterUpdateRequest
+        {
+            Biography = "",
+            BirthDate = DateTime.Now,
+            FirstName = "",
+            LastName = "",
+            Occupation = "",
+            MediaFile = new MCharacterMediaFile()
+        };
 
         private class ValueHolder
         {
@@ -132,6 +144,41 @@ namespace fandom.WindowsForms.Forms.Character
             this.textBox4.BackColor = Color.WhiteSmoke;
 
             this.dateTimePicker1.Visible = false;
+
+            this.pictureBox1.Image = characterInitialData.initialImage;
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var fullName = textBox1.Text.Split(' ');
+            if (fullName.Length > 1 && fullName.Length < 3)
+            {
+                request.FirstName = fullName[0];
+                request.LastName = fullName[1];
+            }
+            request.Biography = textBox2.Text;
+            request.BirthDate = dateTimePicker1.Value;
+            request.Occupation = textBox4.Text;
+
+           await _characterApiService.Update<MCharacter>(_characterId, request);
+            MessageBox.Show("Character updated");
+            DetailsCharacter.ActiveForm.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo fi = new FileInfo(ofd.FileName);
+
+                    var imageByte = File.ReadAllBytes(fi.FullName);
+                    request.MediaFile.Thumbnail = imageByte;
+
+                    this.pictureBox1.Image = ImageWorker.ConvertFromByteArray(imageByte);
+                }
+            }
         }
     }
 }

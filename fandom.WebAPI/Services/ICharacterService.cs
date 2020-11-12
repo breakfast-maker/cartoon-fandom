@@ -17,5 +17,7 @@ namespace fandom.WebAPI.Services
 
         MCharacter Insert(CharacterInsert request);
 
+        MCharacter Update(int id, CharacterUpdateRequest request);
     }
+
 }
