@@ -33,6 +33,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Pick image" Clicked="Button_Clicked_1" />
+            <Image WidthRequest="300" HeightRequest="200" x:Name="postImage"/> 
             <Button Text="Create" Clicked="Button_Clicked" />
         </StackLayout>
     </ContentPage.Content>

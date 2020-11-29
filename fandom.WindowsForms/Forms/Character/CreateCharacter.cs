@@ -73,7 +73,7 @@ namespace fandom.WindowsForms.Forms.Character
                     
                     MessageBox.Show("Success");
 
-                    CreateCharacter.ActiveForm.Close();
+                    this.Close();
                 }
                 catch
                 {

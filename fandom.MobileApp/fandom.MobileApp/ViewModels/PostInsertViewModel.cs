@@ -34,6 +34,8 @@ namespace fandom.MobileApp.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public byte[] postImage { get; set; }
+
         private string _summary = string.Empty;
         public string PostSummary
         {
@@ -75,6 +77,11 @@ namespace fandom.MobileApp.ViewModels
                         Title = PostTitle,
                         Tags = new List<MTag>()
                     };
+
+                    if(postImage != null)
+                    {
+                        request.Image = postImage;
+                    }
 
                     foreach (var item in Tags)
                     {

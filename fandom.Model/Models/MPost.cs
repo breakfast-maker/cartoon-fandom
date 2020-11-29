@@ -10,6 +10,8 @@ namespace fandom.Model.Models
 
         public string Title { get; set; }
 
+        public byte[] Image { get; set; }
+
         public string Summary { get; set; }
 
         public DateTime CreationDate { get; set; }

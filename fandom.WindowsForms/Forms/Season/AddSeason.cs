@@ -95,7 +95,7 @@ namespace fandom.WindowsForms.Forms.Season
 
         private void HandleActiveForm()
         {
-            AddSeason.ActiveForm.Close();
+           this.Close();
             MessageBox.Show("OK");
         }
 

@@ -54,7 +54,7 @@ namespace fandom.WindowsForms.Forms.Episode
                 await InsertEpisode();
                 await RefreshEpisodeList();
                 MessageBox.Show("Success");
-                AddEpisode.ActiveForm.Close();
+                this.Close();
             }
         }
 

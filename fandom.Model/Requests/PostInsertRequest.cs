@@ -12,6 +12,7 @@ namespace fandom.Model.Requests
         public MCategory Category { get; set; }
         public List<MTag> Tags { get; set; }
         public DateTime CreationDate { get; set; }
+        public byte[] Image { get; set; }
         public MUser PostOwner { get; set; }
     }
 }

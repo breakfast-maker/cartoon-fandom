@@ -164,8 +164,8 @@ namespace fandom.WindowsForms.Forms.Character
 
            await _characterApiService.Update<MCharacter>(_characterId, request);
             await CharacterFamilyForm.LoadCharacters();
+            this.Close();
             MessageBox.Show("Character updated");
-            DetailsCharacter.ActiveForm.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -188,8 +188,9 @@ namespace fandom.WindowsForms.Forms.Character
         {
             await _characterApiService.Delete<MCharacter>(_characterId);
             await CharacterFamilyForm.LoadCharacters();
+            this.Close();
             MessageBox.Show("Deleted");
-            DetailsCharacter.ActiveForm.Close();
+           
         }
     }
 }

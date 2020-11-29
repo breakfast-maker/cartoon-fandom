@@ -32,6 +32,7 @@ namespace fandom.WebAPI.Services
                 CreationDate = x.CreationDate,
                 Summary = x.Summary,
                 Title = x.Title,
+                Image = x.Image,
                 User = _mapper.Map<MUser>(x.User),
                 Tags = x.PostsTags.Where(y => y.PostId==x.Id).Select(y => new MTag
                 {
@@ -61,7 +62,8 @@ namespace fandom.WebAPI.Services
                 CreationDate = request.CreationDate,
                 Summary = request.Summary,
                 Title = request.Title,
-                UserId = request.PostOwner.Id,
+                Image = request.Image,
+                UserId = request.PostOwner.Id
             };
 
             ctx.Posts.Add(newPost);

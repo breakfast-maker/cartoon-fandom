@@ -47,7 +47,7 @@ namespace fandom.WindowsForms.Forms.Family
                     await _familyApiService.Insert<MFamily>(_request);
                     await CharacterFamilyForm.LoadFamilies();
                     MessageBox.Show("Success");
-                    AddFamily.ActiveForm.Close();
+                    this.Close();
                 }
                 else
                 {

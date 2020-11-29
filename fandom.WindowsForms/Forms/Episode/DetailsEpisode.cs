@@ -177,7 +177,7 @@ namespace fandom.WindowsForms.Forms.Episode
                 await _episodeService.Update<MEpisode>(_eId, request);
                 await RefreshEpisodeList();
                 MessageBox.Show("Updated");
-                DetailsEpisode.ActiveForm.Close();
+               this.Close();
             }
             catch(Exception ex)
             {

@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels="clr-namespace:fandom.MobileApp.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModels="clr-namespace:fandom.MobileApp.ViewModels" xmlns:converters="clr-namespace:fandom.MobileApp.Converters"
              x:Class="fandom.MobileApp.Views.PostPage">
     <ContentPage.BindingContext>
         <viewModels:PostPageViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
@@ -45,7 +50,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label FontSize="Small" Margin="5,15,10,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Post.Summary}"/>
+            <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+            <Label FontSize="Small" Margin="5,15,10,5" Text="{Binding Post.Summary}"/>
+            <Image x:Name="testImage" HeightRequest="350" WidthRequest="550" Source="{Binding Post.Image, Converter={StaticResource imgConv}}" />
+            </StackLayout>
             <StackLayout Padding="4,0,0,2" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <Label FontAttributes="Bold" Text="{Binding Post.User.Username}"/>
                 <Label FontAttributes="Bold" Text="{Binding Post.CreationDate}"/>
