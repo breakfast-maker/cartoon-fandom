@@ -77,7 +77,7 @@ namespace fandom.MobileApp.ViewModels
                 {
                     var request = new PostUpdateRequest
                     {
-                        Category = selectedCategory,
+                        CategoryId = selectedCategory.Id,
                         UpdatedDate = DateTime.Now,
                         Summary = PostSummary,
                         Title = PostTitle,

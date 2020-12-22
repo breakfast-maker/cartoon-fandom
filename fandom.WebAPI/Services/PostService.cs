@@ -105,7 +105,7 @@ namespace fandom.WebAPI.Services
             post.Title = request.Title;
             post.Summary = request.Summary;
             post.CreationDate = request.UpdatedDate;
-            post.CategoryId = request.Category.Id;
+            post.CategoryId = request.CategoryId;
 
             ctx.SaveChanges();
 
