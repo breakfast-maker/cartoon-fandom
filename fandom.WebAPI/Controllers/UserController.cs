@@ -36,5 +36,8 @@ namespace fandom.WebAPI.Controllers
 
         [HttpPut("{id}")]
         public MUser UpdateUser(int id, UserUpdateRequest request) => _userService.Update(id, request);
+
+        [HttpDelete("{id}")]
+        public void DeleteUser(int id) => _userService.Delete(id);
     }
 }

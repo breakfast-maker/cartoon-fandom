@@ -126,11 +126,12 @@ namespace fandom.WebAPI.Services
 
         public MUser GetById(int id)
         {
-            var user = _ctx.Users.Where(x => x.Id == id).Select(x => new MUser
+            var user = _ctx.Users.Include(x => x.UsersRoles).Where(x => x.Id == id).Select(x => new MUser
             {
                 Id = x.Id,
                 Email = x.Email,
                 Username = x.Username,
+                Roles = x.UsersRoles.Where(y => y.UserId == x.Id).Select(y => new MRole { Id = y.Role.Id, Name = y.Role.Name }).ToList(),
                 FavouriteCharacters = x.UsersCharacters.Where(y => y.UserId == x.Id).Select(y =>
                   new MCharacter
                   {
@@ -146,6 +147,14 @@ namespace fandom.WebAPI.Services
             }).FirstOrDefault();
 
             return user;
+        }
+
+        public void Delete(int id)
+        {
+            var user = _ctx.Users.Where(x => x.Id == id).FirstOrDefault();
+
+            _ctx.Users.Remove(user);
+            _ctx.SaveChanges();
         }
 
         public MUser Update(int id, UserUpdateRequest request)

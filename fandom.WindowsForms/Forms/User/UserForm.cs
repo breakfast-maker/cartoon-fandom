@@ -33,6 +33,11 @@ namespace fandom.WindowsForms.Forms
             }
         }
 
+        public ListView usersListView
+        {
+            get { return this.listView1; }
+        }
+
         private void addEpisodeButton_Click(object sender, EventArgs e)
         {
             var form = new AddUser();
@@ -50,7 +55,8 @@ namespace fandom.WindowsForms.Forms
             var result = await _userApiService.Get<List<MUser>>();
             foreach (var items in result)
             {
-                var item = new ListViewItem(items.Username);
+                var item = new ListViewItem(items.Id.ToString());
+                item.SubItems.Add(items.Username);
                 item.SubItems.Add(items.Email);
 
                 StringBuilder strBuilder = new StringBuilder();
@@ -60,6 +66,15 @@ namespace fandom.WindowsForms.Forms
 
                 this.listView1.Items.Add(item);
             }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            var idStr = listView1.SelectedItems[0].Text;
+            var id = Int32.Parse(idStr);
+
+            var form = new DetailsUser(id);
+            form.Show();
         }
     }
 }

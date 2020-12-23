@@ -19,5 +19,7 @@ namespace fandom.WebAPI.Services
         MUser InsertUser(UserInsertRequest request);
 
         MUser Authenticiraj(string username, string password);
+
+        void Delete(int id);
     }
 }
